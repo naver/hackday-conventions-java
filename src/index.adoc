@@ -1,0 +1,10 @@
+= 캠퍼스 핵데이 Java 코딩 컨벤션
+:doctype: book
+:toc: left
+:sectnums:
+
+v1.0.0, 2019.11.20
+
+include::./all-file-rules.adoc[]
+include::./java-rules.adoc[]
+include::./tool-configs.adoc[]

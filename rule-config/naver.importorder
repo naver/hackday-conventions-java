@@ -1,0 +1,11 @@
+# naver coding convention
+# [blankline-between-import-group]
+8=com.naver
+7=com.navercorp
+6=com.nhncorp
+5=
+4=com
+3=net
+2=org
+1=javax
+0=java

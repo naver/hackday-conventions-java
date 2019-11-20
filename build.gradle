@@ -1,0 +1,39 @@
+plugins {
+    id 'org.asciidoctor.convert' version '1.5.9.2'
+    id 'org.ajoberstar.git-publish' version '2.1.1'
+    id 'org.ec4j.editorconfig' version '0.0.3'
+}
+
+asciidoctor {
+    sourceDir = file('src')
+    sources {
+        include 'index.adoc'
+    }
+    resources {
+        from(sourceDir) {
+            include 'images/**'
+        }
+    }
+    outputDir = file(buildDir)
+    backends = ['html']
+    separateOutputDirs = false
+}
+
+gitPublish {
+    repoUri = 'git@github.com:naver/hackday-conventions-java.git'
+    branch = 'gh-pages'
+    repoDir = file('public')
+    contents {
+        from(file(buildDir)) {
+            into '.'
+        }
+    }
+}
+
+editorconfig {
+    excludes = ['public', 'build']
+}
+
+build.dependsOn asciidoctor
+gitPublishCommit.dependsOn build
+check.dependsOn editorconfigCheck

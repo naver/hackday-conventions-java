@@ -1,0 +1,6 @@
+:github-url: https://github.com/naver/hackday-conventions-java
+:checkstyle-rules: {github-url}/blob/master/rule-config/naver-checkstyle-rules.xml
+:checkstyle-version: 8.24
+:eclipse-formatter: {github-url}/blob/master/rule-config/naver-eclipse-formatter.xml
+:eclipse-import-order: {github-url}/blob/master/rule-config/naver.importorder
+:intellij-formatter: {github-url}/blob/master/rule-config/naver-intellij-formatter.xml
