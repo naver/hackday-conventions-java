@@ -1,0 +1,84 @@
+= 캠퍼스 핵데이 Java 코딩 컨벤션
+
+* 문서 : https://naver.github.io/hackday-conventions-java/
+* 설정 파일 : https://github.com/naver/hackday-conventions-java/tree/master/rule-config
+
+== 빠른 적용 가이드
+최소한의 규칙으로 빠르게 적용을 하고 싶다면 아래 단락만 참고합니다.
+
+* `.editorconfig` 설정 : https://naver.github.io/hackday-conventions-java/#editorconfig
+** Gradle 빌드에서 .editconfig의 규칙 검사 : https://naver.github.io/hackday-conventions-java/gradle-editorconfig
+* IntelliJ 포멧터 적용 : https://naver.github.io/hackday-conventions-java/#intellij-formatter
+
+== 가이드 특징
+
+=== 판단 기준이 명확한 규칙만을 서술
+'짧고 간결한 이름', '불필요한 주석 지양' 등 사람마다 기준이 다른 규칙은 제외했습니다.
+앞으로도 준수여부를 판단하는데 토론이 필요한 요소나 프로그래밍 프랙티스 등은 이 가이드에는 포함하지 않을 예정입니다.
+
+=== 규칙 식별자 활용
+규칙마다 식별자를 지정하고 이를 문서 링크와 설정 파일에 표기했습니다.
+
+예를 들어 '하드탭 사용' 규칙은 `indentation-tab` 라는 식별자가 부여되어 있습니다.
+이 규칙의 링크는 https://naver.github.io/hackday-conventions-java/#indentation-tab 이고, 각종 설정 파일에서도 이 식별자를 표기했습니다.
+규칙을 커스터마이징 하거나 제거할 때 설정 파일 안에서 식별자로 검색을 하는 것을 추천합니다.
+
+[source,properties]
+.editorconfig 설정
+----
+[*.java]
+# [indentation-tab]
+indent_style = tab
+----
+
+[source,xml]
+.Checkstyle 설정
+----
+<!-- [indentation-tab] -->
+<module name="RegexpSinglelineJava">
+    <property name="format" value="^\t* "/>
+    <property name="message" value="[indentation-tab] Indent must use tab characters"/>
+    <property name="ignoreComments" value="true"/>
+</module>
+----
+
+[source,xml]
+.Eclipse 포멧터 설정
+----
+<!-- [indentation-tab] -->
+<setting id="org.eclipse.jdt.core.formatter.tabulation.char" value="tab"/>
+----
+
+=== 커스터마이징 방법 설명
+이 가이드의 규칙을 프로젝트별로 재정의해서 사용할 경우를 대비해서 각종 도구들을 커스터마이징 할수 있는 방법을 설명했습니다.
+
+* Checksttyle 커스터마이징 : https://naver.github.io/hackday-conventions-java/#checkstyle-customizing
+* IntelliJ 커스터마이징 : https://naver.github.io/hackday-conventions-java/#intellij-customizing
+* Eclipse 커스터마이징 : https://naver.github.io/hackday-conventions-java/#intellij-customizing
+
+== 문서 빌드 & 배포
+
+=== 문서 빌드
+`./gradlew build` 를 수행하면 `build/index.html` 경로에 가이드 문서가 생성됩니다.
+
+=== 문서 배포
+https://github.com/ajoberstar/gradle-git-publish[gradle-git-publish] 플러그인을 이용해서 GitHub Pages로 배포됩니다.
+
+작업자가 최초로 배포할 때는 아래와 명령을 한번 수행해야 합니다.
+[source]
+----
+./gradlew gitPublishCommit
+cd public
+git push --set-upstream origin gh-pages
+----
+
+이후에는  `./gradlew gitPublishPush` 명령만으로 배포할 수 있습니다.
+
+빌드서버에서는 https://github.com/settings/tokens 에서 Access Token을 발급받아서 Token 값을 아래와 같이 지정할수 있습니다.
+
+[source]
+----
+ ./gradlew gitPublishPush -Dorg.ajoberstar.grgit.auth.username=[token]
+----
+
+또는 OS의 환경변수에 `GRGIT_USER` 변수에 token값을 설정해도 됩니다.
