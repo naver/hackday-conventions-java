@@ -8,7 +8,7 @@
 최소한의 규칙으로 빠르게 적용을 하고 싶다면 아래 단락만 참고합니다.
 
 * `.editorconfig` 설정 : https://naver.github.io/hackday-conventions-java/#editorconfig
-** Gradle 빌드에서 .editconfig의 규칙 검사 : https://naver.github.io/hackday-conventions-java/gradle-editorconfig
+** Gradle 빌드에서 .editconfig의 규칙 검사 : https://naver.github.io/hackday-conventions-java/#gradle-editorconfig
 * IntelliJ 포멧터 적용 : https://naver.github.io/hackday-conventions-java/#intellij-formatter
 
 == 가이드 특징
