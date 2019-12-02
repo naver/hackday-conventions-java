@@ -14,7 +14,6 @@ asciidoctor {
             include 'images/**'
         }
     }
-    outputDir = file(buildDir)
     backends = ['html']
     separateOutputDirs = false
 }
@@ -22,16 +21,15 @@ asciidoctor {
 gitPublish {
     repoUri = 'git@github.com:naver/hackday-conventions-java.git'
     branch = 'gh-pages'
-    repoDir = file('public')
     contents {
-        from(file(buildDir)) {
+        from(asciidoctor.outputDir) {
             into '.'
         }
     }
 }
 
 editorconfig {
-    excludes = ['public', 'build']
+    excludes = ["${buildDir}"]
 }
 
 build.dependsOn asciidoctor

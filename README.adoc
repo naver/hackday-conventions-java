@@ -60,7 +60,7 @@ indent_style = tab
 == 문서 빌드 & 배포
 
 === 문서 빌드
-`./gradlew build` 를 수행하면 `build/index.html` 경로에 가이드 문서가 생성됩니다.
+`./gradlew build` 를 수행하면 `build/asciidoc/index.html` 경로에 가이드 문서가 생성됩니다.
 
 === 문서 배포
 https://github.com/ajoberstar/gradle-git-publish[gradle-git-publish] 플러그인을 이용해서 GitHub Pages로 배포됩니다.
