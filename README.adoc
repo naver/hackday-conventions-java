@@ -65,15 +65,7 @@ indent_style = tab
 === 문서 배포
 https://github.com/ajoberstar/gradle-git-publish[gradle-git-publish] 플러그인을 이용해서 GitHub Pages로 배포됩니다.
 
-작업자가 최초로 배포할 때는 아래와 명령을 한번 수행해야 합니다.
-[source]
-----
-./gradlew gitPublishCommit
-cd public
-git push --set-upstream origin gh-pages
-----
-
-이후에는  `./gradlew gitPublishPush` 명령만으로 배포할 수 있습니다.
+`./gradlew gitPublishPush` 을 실행하면 `{프로젝트 홈}/build/gitPublish` 디렉토리에 gh-pages 브랜치와 연결된 Local Git repoisitory가 생깁니다.
 
 빌드서버에서는 https://github.com/settings/tokens 에서 Access Token을 발급받아서 Token 값을 아래와 같이 지정할수 있습니다.
 
