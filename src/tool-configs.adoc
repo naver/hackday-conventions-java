@@ -1,4 +1,4 @@
-include::./variables.adoc[]
+include::./tool-variables.adoc[]
 
 [appendix]
 [[editorconfig]]
@@ -51,7 +51,7 @@ Checkstyle 은 코딩컨벤션 검사 도구이다. 이 가이드에서 안내�
 
 [[checkstyle-version]]
 === 필수 버전
-Checkstyle 8.2 버전 이상을 사용해야 한다. 빌드도구와 IDE에서 권장한 버전을 쓰고 있는지 확인을 한다.
+Checkstyle {checkstyle-version} 버전 이상을 사용해야 한다. 빌드 도구와 IDE에서 권장한 버전을 쓰고 있는지 확인을 한다.
 
 [[checkstyle-rule-download]]
 === 규칙 설정 파일 다운로드
