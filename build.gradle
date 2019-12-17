@@ -1,5 +1,5 @@
 plugins {
-    id 'org.asciidoctor.convert' version '1.5.9.2'
+    id 'org.asciidoctor.convert' version '2.4.0'
     id 'org.ajoberstar.git-publish' version '2.1.1'
     id 'org.ec4j.editorconfig' version '0.0.3'
 }
