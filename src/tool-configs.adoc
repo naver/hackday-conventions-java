@@ -42,8 +42,6 @@ max_line_length = 120
 
 ----
 
-
-
 [appendix]
 [[checkstyle]]
 == Checkstyle 사용법
@@ -70,14 +68,16 @@ https://github.com/checkstyle/checkstyle/releases/ 에서 jar 파일을 다운�
 java -jar checkstyle-{checkstyle-version}-all.jar -c [규칙파일] [소스폴더]
 ----
 
-{checkstyle-rules}[naver-checkstyle-rules.xml]을 실행할 때는  `-Dconfig_loc 속성 지정이 필수적으로 필요하다.
-예외선언 파일의 위치를 IDE와 Maven 빌드 양쪽에서 참조하기 위해서 필요한 속성이다.
+{checkstyle-rules}[naver-checkstyle-rules.xml]을 수정 없이 사용할 때는  `-DsuppressionFile` 속성을 지정해야 한다.
+예외선언 파일의 위치를 IDE와 Maven/Gradle 빌드 양쪽에서 참조하기 위해서 필요한 속성이다.
 
 .naver-checkstyle-rules.xml 독립 실행 사례
 [source,subs="attributes+"]]
 ----
-java -Dconfig_loc=config -jar checkstyle-{checkstyle-version}-all.jar -c config/naver-checkstyle-rules.xml src
+java -DsuppressionFile=naver-checkstyle-suppressions.xml -jar checkstyle-{checkstyle-version}-all.jar -c naver-checkstyle-rules.xml src
 ----
+
+만약 검사 대상에서 제외할 파일이 없다면 <<checkstyle-rule-suppressions-xml>> 을 참조해서 `suppressionFile` 과 관련된 선언을 삭제하고 위의 명령에서도 생략할 수 있다.
 
 [[checkstyle-rule-finding]]
 === 관련 규칙 확인 방법
@@ -112,7 +112,21 @@ java -Dconfig_loc=config -jar checkstyle-{checkstyle-version}-all.jar -c config/
 
 [[checkstyle-rule-suppressions-xml]]
 ====  제외 대상을 별도의 파일로 선언
-{checkstyle-rules}[naver-checkstyle-rules.xml]의 설정에서는 `naver-checkstyle-suppressions.xml`라는 지정된 위치에 있을 경우, 해당 파일을 참조하여 검사 대상에서 일부 파일을 제외한다.
+Checkstyle에서는 검사대상에서 제외할 파일을 별도의 설정파일에서 지정할 수 있다.
+
+{checkstyle-rules}[naver-checkstyle-rules.xml]의 설정에서는 `suppressionFile` 이라는 속성으로 `naver-checkstyle-suppressions.xml` 파일의 위치를 지정할 수 있도록 미리 설정되어 있다.
+
+[source,xml]
+----
+    <module name="SuppressionFilter">
+        <property name="file" value="${suppressionFile}"/>
+        <property name="optional" value="false"/>
+    </module>
+----
+
+굳이 예외로 지정할 파일이 없다면 {checkstyle-rules}[naver-checkstyle-rules.xml]에서 위의 선언은 삭제하고 사용한다.
+
+`suppressionFile` 속성으로 참조할 파일은 `naver-checkstyle-suppressions.xml` 과 같은 이름으로 지정한다.
 
 [source,xml]
 .naver-checkstyle-suppressions.xml 선언의 예
@@ -250,6 +264,8 @@ https://github.com/ec4j/editorconfig-maven-plugin 을 참고한다.
 `<build>` 태그 아래에 `<pluginManagement/>` 선언에 maven-checkstyle-plugin의 버전과 checkstyle의 버전을 명시한다.
 checkstyle의 버전은 반드시 {checkstyle-version} 이상으로 지정한다.
 
+예외를 선언할 파일이 없다면 `naver-checkstyle-suppressions.xml` 과 관련된 설정은 생략해도 된다.
+
 [source,xml,subs="attributes+"]
 .pluginManagement 선언
 ----
@@ -262,7 +278,7 @@ checkstyle의 버전은 반드시 {checkstyle-version} 이상으로 지정한다
             <configuration>
                 <configLocation>naver-checkstyle-rules.xml</configLocation>
                 <sourceDirectory>${project.build.sourceDirectories}</sourceDirectory>
-                <propertyExpansion>config_loc=./config</propertyExpansion>
+                <propertyExpansion>suppressionFile=./naver-checkstyle-suppressions.xml</propertyExpansion>
             </configuration>
             <dependencies>
                 <dependency>
@@ -275,6 +291,7 @@ checkstyle의 버전은 반드시 {checkstyle-version} 이상으로 지정한다
     </plugins>
 </pluginManagement>
 ----
+
 
 `<build>` -> `<plugins>` 태그 아래에 다음과 같은 선언을 추가한다.
 
@@ -348,13 +365,14 @@ plugins {
 }
 
 checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail을 내고 싶다면 이 선언을 추가한다.
     configFile = file("${rootDir}/naver-chestyle-rules.xml")
-    configProperties = [config_loc: "${rootDir}"]
+    configProperties = ["suppressionFile" : "${rootDir}/naver-checkstyle-suppressions.xml"]
     toolVersion ="{checkstyle-version}"  // checkstyle 버전 {checkstyle-version} 이상 선언
 }
 ----
 
-`config_loc` 속성은 `naver-style-supressions.xml`을 찾을 때 참조된다.
+예외를 선언할 파일이 없다면 `naver-style-supressions.xml` 관련 선언은 생략할 수 있다.
 
 [appendix]
 [[editor-config]]
@@ -610,10 +628,10 @@ image:images/intellij-checkstyle-install.png["CheckStyle-IDEA", align="center", 
 ** `Description` : 식별할 수 있는 이름. `naver-checkstyle-rules` 를 권장한다.
 ** `Use a Local Checkstyle File` : 선택하고 `[Browse]` 버튼을 눌러서 `naver-checkstyle-rules.xml`을 지정한다.
 ** `[Next]` 버튼을 누른다.
-4. `config_loc` 변수를 설정하라는 화면이 나오면
-** image:images/intellij-checkstyle-configloc.png["IntelliJ Checkstyle config_loc", align="center", width="50%"]
-** 예외 설정 파일인 `naver-checkstyle-suppressions.xml` 이 없을 경우 바로 `[Next]` 버튼을 누른다.
-** `naver-checkstyle-suppressions.xml` 이 있을 경우에는 파일의 디렉토리를 입력한 후 `[Next]` 버튼을 누른다.
+4. `suppressionFile` 변수를 설정하라는 화면이 나오면
+** image:images/intellij-checkstyle-suppressions.png["IntelliJ Checkstyle config_loc", align="center", width="50%"]
+** 검사 예외를 지정하지 않는다면 `[Next]` 버튼을 누른다.
+** 예외 정책을 지정할 `naver-checkstyle-suppressions.xml` 이 있을 경우에는 파일의 위치를 입력한 후 `[Next]` 버튼을 누른다. 프로젝트 루트에서 상대경로로 입력해도 된다.
 5. `naver-checkstyle-rules` 규칙을 앞의 체크박스를 선택한다.
 ** image:images/intellij-checkstyle-settings.png["IntelliJ Checkstyle 설정", align="center", width="50%"]
 
