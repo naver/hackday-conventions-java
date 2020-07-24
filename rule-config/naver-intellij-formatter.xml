@@ -1,4 +1,4 @@
-<code_scheme name="Naver-coding-convention">
+<code_scheme name="Naver-coding-convention-v1.2">
   <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
   <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="1" />
   <option name="IMPORT_LAYOUT_TABLE">
@@ -13,6 +13,8 @@
       <package name="org" withSubpackages="true" static="false" />
       <emptyLine />
       <package name="net" withSubpackages="true" static="false" />
+      <emptyLine />
+      <package name="com" withSubpackages="true" static="false" />
       <emptyLine />
       <package name="" withSubpackages="true" static="false" />
       <emptyLine />

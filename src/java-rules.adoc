@@ -629,23 +629,21 @@ import java.util.Date;
 === `import` 선언의 순서와 빈 줄 삽입
 _[import-grouping]_
 
-import 구절은 아래와 같은 순서로 선언한다.
+import 구절은 아래와 같은 순서로 그룹을 묶어서 선언한다.
 
-A. static imports
-B. JDK의 클래스
-** `java.`
-** `javax.`
-C. 외부 라이브러리의 클래스
-** `org.`
-** `net.`
-** `com.`
-** 그 외의 클래스
-D. 네이버 내부에서 만든 클래스
-** `com.nhncorp.`
-** `com.navercorp.`
-** `com.naver.`
+1. static imports
+2. `java.`
+3. `javax.`
+4. `org.`
+5. `net.`
+6. 8~10을 제외한 `com.*`
+7. 1~6, 8~10을 제외한 패키지에 있는 클래스
+8. `com.nhncorp.`
+9. `com.navercorp.`
+10. `com.naver.`
 
-A,B,C,D 그룹의 사이에는 빈 줄을 삽입한다. 그룹 내부에서 세부적인 구분을 위해 빈줄을 삽입하는 것도 허용한다.
+각 그룹 사이에는 빈줄을 삽입한다.
+같은 그룹 내에서는 알파벳 순으로 정렬한다.
 
 [source,java]
 .좋은 예

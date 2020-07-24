@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <profiles version="11">
-<profile kind="CodeFormatterProfile" name="Naver coding convention" version="0.3.0">
+<profile kind="CodeFormatterProfile" name="Naver coding convention" version="1.2">
 
 <!-- Start of Declarations chapter -->
 

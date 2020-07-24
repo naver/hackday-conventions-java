@@ -274,10 +274,10 @@ checkstyle의 버전은 반드시 {checkstyle-version} 이상으로 지정한다
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>3.1.0</version>
+            <version>3.1.1</version>
             <configuration>
                 <configLocation>naver-checkstyle-rules.xml</configLocation>
-                <sourceDirectory>${project.build.sourceDirectories}</sourceDirectory>
+                <sourceDirectories>${project.build.sourceDirectories}</sourceDirectories>
                 <propertyExpansion>suppressionFile=./naver-checkstyle-suppressions.xml</propertyExpansion>
             </configuration>
             <dependencies>
@@ -540,13 +540,14 @@ image:images/eclipse-line-wrapping.png["IntelliJ 줄바꿈 들여쓰기 설정",
 ** image:images/intellij-formatter-import.png["IntelliJ Formatter Import", align="center", width="50%"]
 ** 1에서 다운로드한 `naver-intellij-formatter.xml` 파일을 선택한후 `[OK]` 버튼을 누른다.
 ** image:images/intellij-formatter-import-scheme.png["IntelliJ Formatter Import Scheme", align="center", width="50%"]
+** `TO` 항목에는 `naver-intellij-formatter.xml` 안에 선언된 'Naver-Coding-Convnetion-v1.2'와 같은 이름이 디폴트로 나온다. 이 이름은 IntelliJ에서 전역적인 식별자가 되어서 다른 프로젝트에도 참조가 된다. 포멧터를 커스터 마이징했거나 프로젝트마다 다른 포멧터 설정을 쓴다면 이 스키마의 이름이 유일성 있게 인지되도록 수정한다.
 ** Settings 레이어의 `[OK]` 버튼을 누른다.
 
 ==== 항목별 수동 설정
 만약 이 가이드에서 제공하는 {intellij-formatter}[naver-intellij-formatter.xm] 설정을 활용하기가 어려운 상황이라면 최소한 아래의 항목들은 직접 설정한다.
 
 ===== 들여쓰기
-'<<[indentation-tab]>>' , '<<4-spaces-tab>>' 설정을 준수하기 위한 설정이다.
+'<<indentation-tab>>' , '<<4-spaces-tab>>' 설정을 준수하기 위한 설정이다.
 
 * `File > Settings > Editor > Code Style > Java` 메뉴로 이동
 ** `User tab charactor` : 선택
@@ -625,7 +626,7 @@ image:images/intellij-checkstyle-install.png["CheckStyle-IDEA", align="center", 
 ** `Treat Checkstyle errors as warnings` : 체크
 2. `File > Settings > Other Settins > Checkstyle` 메뉴로 이동한다.
 3. `[+]` 버튼을 누르면 나오는 입력창에서 아래 항목을 입력한다.
-** `Description` : 식별할 수 있는 이름. `naver-checkstyle-rules` 를 권장한다.
+** `Description` : 식별할 수 있는 이름. `Naver Checkstyle Rules [버전]` 를 권장한다. 프로젝트별로 커스터마이징을 했다면 식별하기 쉽게 프로젝트 이름 등을 붙인다.
 ** `Use a Local Checkstyle File` : 선택하고 `[Browse]` 버튼을 눌러서 `naver-checkstyle-rules.xml`을 지정한다.
 ** `[Next]` 버튼을 누른다.
 4. `suppressionFile` 변수를 설정하라는 화면이 나오면
