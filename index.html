@@ -555,7 +555,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>v1.1.1, 2020.03.30</p>
+<p>v1.2.0, 2020.07.24</p>
 </div>
 </div>
 </div>
@@ -1430,30 +1430,19 @@ import java.util.Date;</code></pre>
 <p><em>[import-grouping]</em></p>
 </div>
 <div class="paragraph">
-<p>import 구절은 아래와 같은 순서로 선언한다.</p>
+<p>import 구절은 아래와 같은 순서로 그룹을 묶어서 선언한다.</p>
 </div>
-<div class="olist upperalpha">
-<ol class="upperalpha">
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>static imports</p>
 </li>
-<li>
-<p>JDK의 클래스</p>
-<div class="ulist">
-<ul>
 <li>
 <p><code>java.</code></p>
 </li>
 <li>
 <p><code>javax.</code></p>
 </li>
-</ul>
-</div>
-</li>
-<li>
-<p>외부 라이브러리의 클래스</p>
-<div class="ulist">
-<ul>
 <li>
 <p><code>org.</code></p>
 </li>
@@ -1461,18 +1450,11 @@ import java.util.Date;</code></pre>
 <p><code>net.</code></p>
 </li>
 <li>
-<p><code>com.</code></p>
+<p>8~10을 제외한 <code>com.*</code></p>
 </li>
 <li>
-<p>그 외의 클래스</p>
+<p>1~6, 8~10을 제외한 패키지에 있는 클래스</p>
 </li>
-</ul>
-</div>
-</li>
-<li>
-<p>네이버 내부에서 만든 클래스</p>
-<div class="ulist">
-<ul>
 <li>
 <p><code>com.nhncorp.</code></p>
 </li>
@@ -1482,13 +1464,11 @@ import java.util.Date;</code></pre>
 <li>
 <p><code>com.naver.</code></p>
 </li>
-</ul>
-</div>
-</li>
 </ol>
 </div>
 <div class="paragraph">
-<p>A,B,C,D 그룹의 사이에는 빈 줄을 삽입한다. 그룹 내부에서 세부적인 구분을 위해 빈줄을 삽입하는 것도 허용한다.</p>
+<p>각 그룹 사이에는 빈줄을 삽입한다.
+같은 그룹 내에서는 알파벳 순으로 정렬한다.</p>
 </div>
 <div class="listingblock">
 <div class="title">좋은 예</div>
@@ -2217,10 +2197,10 @@ checkstyle의 버전은 반드시 8.24 이상으로 지정한다.</p>
         &lt;plugin&gt;
             &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
             &lt;artifactId&gt;maven-checkstyle-plugin&lt;/artifactId&gt;
-            &lt;version&gt;3.1.0&lt;/version&gt;
+            &lt;version&gt;3.1.1&lt;/version&gt;
             &lt;configuration&gt;
                 &lt;configLocation&gt;naver-checkstyle-rules.xml&lt;/configLocation&gt;
-                &lt;sourceDirectory&gt;${project.build.sourceDirectories}&lt;/sourceDirectory&gt;
+                &lt;sourceDirectories&gt;${project.build.sourceDirectories}&lt;/sourceDirectories&gt;
                 &lt;propertyExpansion&gt;suppressionFile=./naver-checkstyle-suppressions.xml&lt;/propertyExpansion&gt;
             &lt;/configuration&gt;
             &lt;dependencies&gt;
@@ -2742,6 +2722,9 @@ Eclipse Checkstyle plugin의 버전은  의존하는 checkstyle의 버전과 동
 <p><span class="image"><img src="images/intellij-formatter-import-scheme.png" alt="IntelliJ Formatter Import Scheme" width="50%"></span></p>
 </li>
 <li>
+<p><code>TO</code> 항목에는 <code>naver-intellij-formatter.xml</code> 안에 선언된 'Naver-Coding-Convnetion-v1.2&#8217;와 같은 이름이 디폴트로 나온다. 이 이름은 IntelliJ에서 전역적인 식별자가 되어서 다른 프로젝트에도 참조가 된다. 포멧터를 커스터 마이징했거나 프로젝트마다 다른 포멧터 설정을 쓴다면 이 스키마의 이름이 유일성 있게 인지되도록 수정한다.</p>
+</li>
+<li>
 <p>Settings 레이어의 <code>[OK]</code> 버튼을 누른다.</p>
 </li>
 </ul>
@@ -2758,7 +2741,7 @@ Eclipse Checkstyle plugin의 버전은  의존하는 checkstyle의 버전과 동
 <div class="sect4">
 <h5 id="_들여쓰기">들여쓰기</h5>
 <div class="paragraph">
-<p>'&lt;&lt;[indentation-tab]&gt;&gt;' , '<a href="#4-spaces-tab">탭의 크기는 4개의 스페이스</a>' 설정을 준수하기 위한 설정이다.</p>
+<p>'<a href="#indentation-tab">하드탭 사용</a>' , '<a href="#4-spaces-tab">탭의 크기는 4개의 스페이스</a>' 설정을 준수하기 위한 설정이다.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2967,7 +2950,7 @@ CheckStyle-IDEA의 사용여부를 선택하는 화면에서 'This plugin provid
 <div class="ulist">
 <ul>
 <li>
-<p><code>Description</code> : 식별할 수 있는 이름. <code>naver-checkstyle-rules</code> 를 권장한다.</p>
+<p><code>Description</code> : 식별할 수 있는 이름. <code>Naver Checkstyle Rules [버전]</code> 를 권장한다. 프로젝트별로 커스터마이징을 했다면 식별하기 쉽게 프로젝트 이름 등을 붙인다.</p>
 </li>
 <li>
 <p><code>Use a Local Checkstyle File</code> : 선택하고 <code>[Browse]</code> 버튼을 눌러서 `naver-checkstyle-rules.xml`을 지정한다.</p>
@@ -3148,7 +3131,7 @@ set shiftwidth=4</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version unspecified<br>
-Last updated 2020-03-30 15:27:04 +0900
+Last updated 2020-07-24 22:56:25 +0900
 </div>
 </div>
 </body>
