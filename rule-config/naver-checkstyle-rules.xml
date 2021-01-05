@@ -425,4 +425,9 @@ The following rules in the Naver coding convention cannot be checked by this con
 		<property name="optional" value="true"/>
 	</module>
 
+	<!--- Exclude module-info.java -->
+	<module name="BeforeExecutionExclusionFileFilter">
+		<property name="fileNamePattern" value="module\-info\.java$"/>
+	</module>
+
 </module>
