@@ -12,7 +12,7 @@ _[newline-lf]_
 
 Unix 형식의 새줄 문자(newline)인 LF(Line Feed, 0x0A)을 사용한다. Windows 형식인 CRLF가 섞이지 않도록 편집기와 GIT 설정 등을 확인한다.
 
-Git을 쓴다면 `.gitattribute` 파일 안에 정책을 선언해서 지정된 새줄 문자로 강제 변환하거나 예외가 될 확장자를 지정할 수 있다. 아래는 그 예시이다.
+Git을 쓴다면 `.gitattributes` 파일 안에 정책을 선언해서 지정된 새줄 문자로 강제 변환하거나 예외가 될 확장자를 지정할 수 있다. 아래는 그 예시이다.
 
 [source]
 ----
