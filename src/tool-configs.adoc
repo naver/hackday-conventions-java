@@ -8,7 +8,7 @@ include::./tool-variables.adoc[]
 다양한 에디터로 파일을 고칠 때 같은 규칙을 참조할수 있도록 가급적 이 파일을 소스 저장소에서 올려서 공유하는 것을 권장한다.
 
 [source,properties]
-.`.editconfig`의 예제
+.`.editorconfig`의 예제
 ----
 # top-most EditorConfig file
 root = true
