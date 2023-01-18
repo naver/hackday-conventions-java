@@ -366,7 +366,7 @@ plugins {
 
 checkstyle {
     maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail을 내고 싶다면 이 선언을 추가한다.
-    configFile = file("${rootDir}/naver-chestyle-rules.xml")
+    configFile = file("${rootDir}/naver-checkstyle-rules.xml")
     configProperties = ["suppressionFile" : "${rootDir}/naver-checkstyle-suppressions.xml"]
     toolVersion ="{checkstyle-version}"  // checkstyle 버전 {checkstyle-version} 이상 선언
 }
