@@ -1,6 +1,6 @@
 plugins {
-    id 'org.asciidoctor.convert' version '2.4.0'
-    id 'org.ajoberstar.git-publish' version '2.1.1'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'org.ajoberstar.git-publish' version '4.2.0'
     id 'org.ec4j.editorconfig' version '0.0.3'
 }
 
@@ -14,8 +14,11 @@ asciidoctor {
             include 'images/**'
         }
     }
-    backends = ['html']
-    separateOutputDirs = false
+    outputOptions {
+        separateOutputDirs = false
+        backends = ['html5']
+    }
+    baseDirFollowsSourceFile()
 }
 
 gitPublish {
