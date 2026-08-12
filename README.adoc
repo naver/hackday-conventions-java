@@ -15,7 +15,7 @@
 
 === 판단 기준이 명확한 규칙만을 서술
 '짧고 간결한 이름', '불필요한 주석 지양' 등 사람마다 기준이 다른 규칙은 제외했습니다.
-앞으로도 준수여부를 판단하는데 토론이 필요한 요소나 프로그래밍 프랙티스 등은 이 가이드에는 포함하지 않을 예정입니다.
+앞으로도 준수 여부를 판단하는 데 토론이 필요한 요소나 프로그래밍 프랙티스 등은 이 가이드에는 포함하지 않을 예정입니다.
 
 === 규칙 식별자 활용
 규칙마다 식별자를 지정하고 이를 문서 링크와 설정 파일에 표기했습니다.
@@ -71,7 +71,7 @@ https://github.com/ajoberstar/gradle-git-publish[gradle-git-publish] 플러그�
 
 [source]
 ----
- ./gradlew gitPublishPush -Dorg.ajoberstar.grgit.auth.username=[token]
+./gradlew gitPublishPush -Dorg.ajoberstar.grgit.auth.username=[token]
 ----
 
 또는 OS의 환경변수에 `GRGIT_USER` 변수에 token값을 설정해도 됩니다.
