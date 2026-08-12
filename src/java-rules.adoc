@@ -41,7 +41,7 @@ HTTP + API + URL 의 클래스 이름의 경우
 === 패키지 이름은 소문자로 구성
 _[package-lowercase]_
 
-패키지 이름은 소문자를 사용하여 작성한다. 단어별 구문을 위해 언더스코어(`_`)나 대문자를 섞지 않는다.
+패키지 이름은 소문자를 사용하여 작성한다. 단어별 구분을 위해 언더스코어(`_`)나 대문자를 섞지 않는다.
 
 [source,java]
 .나쁜 예
@@ -89,21 +89,21 @@ _[class-noun]_
 === 인터페이스 이름에 명사/형용사 사용
 _[interface-noun-adj]_
 
-인터페이스(interface)의 이름은 클래스 이름은 명사/명사절로 혹은 형용사/형용사절로 짓는다.
+인터페이스(interface)의 이름은 명사/명사절 혹은 형용사/형용사절로 짓는다.
 
 [source,java]
 .좋은 예
 ----
 public interface RowMapper {
 
-public interface AutoClosable {
+public interface AutoCloseable {
 ----
 
 [id="test-class-suffix"]
 === 테스트 클래스는 'Test'로 끝남
 _[test-class-suffix]_
 
-JUnit 등으로 작성한 테스트 코드를 담은 클래스는 'Test'을 마지막에 붙인다.
+JUnit 등으로 작성한 테스트 코드를 담은 클래스는 'Test'를 마지막에 붙인다.
 
 [source,java]
 .좋은 예
@@ -115,7 +115,7 @@ public class WatcherTest {
 === 메서드 이름에 소문자 카멜표기법 적용
 _[method-lower-camelcase]_
 
-메서드의 이름에는 첫 번째 단어를 소문자로 작성하고, 이어지는 단어의 첫 글자를 대문자로 작성하는 소문자 카멜표기법(Lower camel case)를 사용한다. 테스트 클래스의 메서드 이름에서는 언더스코어를 허용한다.
+메서드의 이름에는 첫 번째 단어를 소문자로 작성하고, 이어지는 단어의 첫 글자를 대문자로 작성하는 소문자 카멜표기법(Lower camel case)을 사용한다. 테스트 클래스의 메서드 이름에서는 언더스코어를 허용한다.
 
 [id="method-verb-preposition"]
 === 메서드 이름은 동사/전치사로 시작
@@ -138,7 +138,7 @@ _[constant_uppercase]_
 .좋은 예
 ----
 public final int UNLIMITED = -1;
-public final String POSTAL_CODE_EXPRESSION = “POST”;
+public final String POSTAL_CODE_EXPRESSION = "POST";
 ----
 
 [id="var-lower-camelcase"]
@@ -338,7 +338,7 @@ long base = 54423234211L;
 === 특수 문자의 전용 선언 방식을 활용
 _[special-escape]_
 
-`\b`, `\f`, `\n`,`\r`,`\t,  `\"`, `\\` 와 같이 특별히 정의된 선언 방식이 있는 특수 문자가 있다. 이런 문자들은 숫자를 이용한 `\008` 이나 `\u0008`와 같은 숫자를 넣은 선언보다 전용 방식을 활용한다.
+`\b`, `\f`, `\n`, `\r`, `\t`, `\"`, `\\` 와 같이 특별히 정의된 선언 방식이 있는 특수 문자가 있다. 이런 문자들은 숫자를 이용한 `\008` 이나 `\u0008`와 같은 숫자를 넣은 선언보다 전용 방식을 활용한다.
 
 [source,java]
 .나쁜 예
@@ -433,16 +433,16 @@ _[sub-flow-after-brace]_
 아래의 키워드는 닫는 중괄호(`}`) 와 같은 줄에 쓴다.
 
 * else
-* catch, finaly
+* catch, finally
 * do-while 문에서의 while
 
 [source,java]
 .나쁜 예
 ----
-if (line.startWith(WARNING_PREFIX)) {
+if (line.startsWith(WARNING_PREFIX)) {
     return LogPattern.WARN;
 }
-else if (line.startWith(DANGER_PREFIX)) {
+else if (line.startsWith(DANGER_PREFIX)) {
     return LogPattern.DANGER;
 }
 else {
@@ -453,10 +453,10 @@ else {
 [source,java]
 .좋은 예
 ----
-if (line.startWith(WARNING_PREFIX)) {
+if (line.startsWith(WARNING_PREFIX)) {
     return LogPattern.WARN;
-} else if (line.startWith(DANGER_PREFIX)) {
-    return LogPattern.NORMAL;
+} else if (line.startsWith(DANGER_PREFIX)) {
+    return LogPattern.DANGER;
 } else {
     return LogPattern.NORMAL;
 }
@@ -523,7 +523,7 @@ public void close() {}
 === 조건/반복문에 중괄호 필수 사용
 _[need-braces]_
 
-조건, 반복문이 한 줄로 끝더라도 중괄호를 활용한다. 이 문서에 언급된 중괄호의 전후의 공백, 제어문 앞 뒤의 새줄 규칙도 함께 고려한다.
+조건, 반복문이 한 줄로 끝나더라도 중괄호를 활용한다. 이 문서에 언급된 중괄호의 전후의 공백, 제어문 앞 뒤의 새줄 규칙도 함께 고려한다.
 
 [source,java]
 .나쁜 예
@@ -571,7 +571,7 @@ _[1-line-package-import]_
 _[indentation-after-line-wrapping]_
 
 줄바꿈 이후 이어지는 줄에서는 최초 시작한 줄에서보다 적어도 1단계의 들여쓰기를 더 추가한다.
-IDE의 자동 포메팅 기능으로 이를 동일하게 맞추러면 <<editor-config,Appendix C의 각 IDE별 설정>>을 참고한다.
+IDE의 자동 포메팅 기능으로 이를 동일하게 맞추려면 <<editor-config,Appendix C의 각 IDE별 설정>>을 참고한다.
 
 [source,java]
 .좋은 예
@@ -601,15 +601,15 @@ _[line-wrapping-position]_
 [source,java]
 .좋은 예
 ----
-public boolen isAbnormalAccess (
+public boolean isAbnormalAccess(
     User user, AccessLog log) {
 
-    String message = user.getId() + "|" | log.getPrefix()
+    String message = user.getId() + "|" + log.getPrefix()
         + "|" + SUFFIX;
 }
 ----
 
-[id="blank-lines)"]
+[id="blank-lines"]
 == 빈 줄(Blank lines)
 빈 줄은 명령문 그룹의 영역을 표시하기 위하여 사용한다.
 
@@ -665,7 +665,7 @@ import com.naver.lucy.util.AnnotationUtils;
 이 규칙은 대부분 IDE에서 자동으로 정리해주는 대로 쓰기 때문에 IDE 설정을 일치시키는데 신경을 써야 한다.
 
 [id="blankline-between-methods"]
-=== 메소드 사이에 빈 줄 삽입
+=== 메서드 사이에 빈 줄 삽입
 _[blankline-between-methods]_
 
 메서드의 선언이 끝난 후 다음 메서드 선언이 시작되기 전에 빈줄을 삽입한다.
@@ -682,6 +682,7 @@ public void setName(String name) {
 }
 ----
 
+[id="whitespace"]
 == 공백 (Whitespace)
 
 [id="no-trailing-spaces"]
@@ -854,7 +855,7 @@ for (Customer customer : visitedCustomers) {
         case SILVER :
             sendEmail(customer);
         default :
-            inreasePoint(customer)
+            increasePoint(customer)
     }
 }
 ----
@@ -881,16 +882,16 @@ if (finalScore > MAX_LIMIT) {
 
 [id="no-space-unary-operator"]
 === 단항 연산자와 연산 대상 사이에 공백을 미삽입
-_[no-space-increament-decrement-operator]_
+_[no-space-unary-operator]_
 
 단항 연산자와 연산 대상의 사이에는 공백을 삽입하지 않는다.
 
 * 전위 연산자 : 연산자 뒤에 공백을 삽입하지 않는다.
-** 전위 증감/감소 연산자 : `++`,`--`
+** 전위 증가/감소 연산자 : `++`,`--`
 ** 부호로 쓰이는 `+`, `-`
 ** NOT 연산자 : `~`, `!`
 * 후위 연산자 : 연산자 앞에 공백을 삽입하지 않는다.
-** 후위 증감/감소 연산자 : `++`,`--`
+** 후위 증가/감소 연산자 : `++`,`--`
 
 [source,java]
 .나쁜 예

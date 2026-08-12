@@ -20,7 +20,7 @@
 === 규칙 식별자 활용
 규칙마다 식별자를 지정하고 이를 문서 링크와 설정 파일에 표기했습니다.
 
-예를 들어 '하드탭 사용' 규칙은 `indentation-tab` 라는 식별자가 부여되어 있습니다.
+예를 들어 '하드탭 사용' 규칙은 `indentation-tab`이라는 식별자가 부여되어 있습니다.
 이 규칙의 링크는 https://naver.github.io/hackday-conventions-java/#indentation-tab 이고, 각종 설정 파일에서도 이 식별자를 표기했습니다.
 규칙을 커스터마이징 하거나 제거할 때 설정 파일 안에서 식별자로 검색을 하는 것을 추천합니다.
 
@@ -51,11 +51,11 @@ indent_style = tab
 ----
 
 === 커스터마이징 방법 설명
-이 가이드의 규칙을 프로젝트별로 재정의해서 사용할 경우를 대비해서 각종 도구들을 커스터마이징 할수 있는 방법을 설명했습니다.
+이 가이드의 규칙을 프로젝트별로 재정의해서 사용할 경우를 대비해서 각종 도구들을 커스터마이징 할 수 있는 방법을 설명했습니다.
 
-* Checksttyle 커스터마이징 : https://naver.github.io/hackday-conventions-java/#checkstyle-customizing
+* Checkstyle 커스터마이징 : https://naver.github.io/hackday-conventions-java/#checkstyle-customizing
 * IntelliJ 커스터마이징 : https://naver.github.io/hackday-conventions-java/#intellij-customizing
-* Eclipse 커스터마이징 : https://naver.github.io/hackday-conventions-java/#intellij-customizing
+* Eclipse 커스터마이징 : https://naver.github.io/hackday-conventions-java/#eclipse-customizing
 
 == 문서 빌드 & 배포
 
@@ -65,9 +65,9 @@ indent_style = tab
 === 문서 배포
 https://github.com/ajoberstar/gradle-git-publish[gradle-git-publish] 플러그인을 이용해서 GitHub Pages로 배포됩니다.
 
-`./gradlew gitPublishPush` 을 실행하면 `{프로젝트 홈}/build/gitPublish` 디렉토리에 gh-pages 브랜치와 연결된 Local Git repoisitory가 생깁니다.
+`./gradlew gitPublishPush` 을 실행하면 `{프로젝트 홈}/build/gitPublish` 디렉토리에 gh-pages 브랜치와 연결된 Local Git repository가 생깁니다.
 
-빌드서버에서는 https://github.com/settings/tokens 에서 Access Token을 발급받아서 Token 값을 아래와 같이 지정할수 있습니다.
+빌드서버에서는 https://github.com/settings/tokens 에서 Access Token을 발급받아서 Token 값을 아래와 같이 지정할 수 있습니다.
 
 [source]
 ----

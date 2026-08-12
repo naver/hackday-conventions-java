@@ -5,7 +5,7 @@ include::./tool-variables.adoc[]
 == .editorconfig 파일 설정
 `.editorconfig` 는 다양한 에디터와 IDE에서 공통적으로 지원하는 코드 스타일에 대한 설정 파일이다.
 자세한 스펙은 https://editorconfig.org/ 에서 파악할 수 있다.
-다양한 에디터로 파일을 고칠 때 같은 규칙을 참조할수 있도록 가급적 이 파일을 소스 저장소에서 올려서 공유하는 것을 권장한다.
+다양한 에디터로 파일을 고칠 때 같은 규칙을 참조할수 있도록 가급적 이 파일을 소스 저장소에 올려서 공유하는 것을 권장한다.
 
 [source,properties]
 .`.editorconfig`의 예제
@@ -72,7 +72,7 @@ java -jar checkstyle-{checkstyle-version}-all.jar -c [규칙파일] [소스폴�
 예외선언 파일의 위치를 IDE와 Maven/Gradle 빌드 양쪽에서 참조하기 위해서 필요한 속성이다.
 
 .naver-checkstyle-rules.xml 독립 실행 사례
-[source,subs="attributes+"]]
+[source,subs="attributes+"]
 ----
 java -DsuppressionFile=naver-checkstyle-suppressions.xml -jar checkstyle-{checkstyle-version}-all.jar -c naver-checkstyle-rules.xml src
 ----
@@ -93,7 +93,7 @@ java -DsuppressionFile=naver-checkstyle-suppressions.xml -jar checkstyle-{checks
 </module>
 ----
 
-규칙의 ID를 이 가이드에서 검색해서 해당 규칙을 찾는다. HTML문서에서는 #뒤에 규칙의 ID를 붙여서 바로 이동할 수도 있다. 예를 들면 [need-brace]에 규칙에 대한 설명은 http://docs.navercorp.com/coding-convention/java.html#need-braces 링크를 걸 수 있다. 온라인 코드 리뷰를 할 때도 이런 링크를 활용할 수 있다.
+규칙의 ID를 이 가이드에서 검색해서 해당 규칙을 찾는다. HTML문서에서는 #뒤에 규칙의 ID를 붙여서 바로 이동할 수도 있다. 예를 들면 [need-braces] 규칙에 대한 설명은 http://docs.navercorp.com/coding-convention/java.html#need-braces 링크를 걸 수 있다. 온라인 코드 리뷰를 할 때도 이런 링크를 활용할 수 있다.
 
 [[checkstyle-rule-limitation]]
 === 검사할 수 없는 규칙
@@ -150,7 +150,7 @@ Checkstyle에서는 검사대상에서 제외할 파일을 별도의 설정파�
 
 * `// @checkstyle:off` : 다음 행부터 검사 대상에서 제외
 * `// @checkstyle:on` : 다음 행부터 검사 대상에 포함
-* `// @checkstyle:ignore` // 같은 행의 소스를 검사하지 않음
+* `// @checkstyle:ignore` : 같은 행의 소스를 검사하지 않음
 
 [source,java]
 .검사 대상에서 제외하는 주석 사용 예
@@ -372,7 +372,7 @@ checkstyle {
 }
 ----
 
-예외를 선언할 파일이 없다면 `naver-style-supressions.xml` 관련 선언은 생략할 수 있다.
+예외를 선언할 파일이 없다면 `naver-checkstyle-suppressions.xml` 관련 선언은 생략할 수 있다.
 
 [appendix]
 [[editor-config]]
@@ -394,7 +394,7 @@ checkstyle {
 ** `naver.importorder` 파일을 {eclipse-import-order} 에서 다운로드한다.
 2. `Organize Imports` 설정 화면으로 이동
 ** Workspace 전역설정은 `Window > Preference > Java > Code style > Organize Imports`로 이동.
-** 프로젝트별 설정은 `Porject > Properties > Java Code style > Organize Imports`로 이동.
+** 프로젝트별 설정은 `Project > Properties > Java Code style > Organize Imports`로 이동.
 3. `Organize Imports`의 항목 입력
 ** `Enable project specific settings`(프로젝트별 설정의 경우) : 체크
 ** `Define the sorting order of import statement`
@@ -418,7 +418,7 @@ image:images/eclipse-imports.png["Eclipse Organize Imports", align="center", wid
 ** `[Import]` 버튼을 누른 후, 다운로드 한 `naver-eclipse-formatter.xml` 파일을 선택한다.
 ** `[OK]`버튼을 누른다.
 
-Formatter가 설정되면 코드 편집창에서 `Ctrl + Shift + f` 키로 코드 포멧을 맞출 수 있다. Formatter가 자동으로 맞춰주는 결과가  들지 않을 수도 있기 때문에 선택적으로 사용한다. 예를 들면 줄바꿈 후 들여쓰기를 최소기준인 한 단계보다 깊게 하고 싶을 경우 포멧터를 쓰지 않고 직접 탭문자를 입력할 수도 있다.  Eclipse의 포멧터는 Checkstyle에서 검사하는 규칙보다 더 구체적인 규칙으로 코드를 맞춰 주기도 한다.
+Formatter가 설정되면 코드 편집창에서 `Ctrl + Shift + f` 키로 코드 포멧을 맞출 수 있다. Formatter가 자동으로 맞춰주는 결과가 마음에 들지 않을 수도 있기 때문에 선택적으로 사용한다. 예를 들면 줄바꿈 후 들여쓰기를 최소기준인 한 단계보다 깊게 하고 싶을 경우 포멧터를 쓰지 않고 직접 탭문자를 입력할 수도 있다.  Eclipse의 포멧터는 Checkstyle에서 검사하는 규칙보다 더 구체적인 규칙으로 코드를 맞춰 주기도 한다.
 
 [[eclipse-save-actions]]
 ==== `Save actions` 활용
@@ -442,13 +442,13 @@ Eclipse에서는 `Ctrl + s`키로 파일을 저장할때 수행하는 동작을 
 
 `Source > Clean up..` 메뉴로 실행한다. 여러 프로젝트에 반복적으로 수행해야할 작업의 그룹이 있다면, 수행할 작업을 별도의 프로파일로 빼서 정의할 수도 있다. 사전정의된 프로파일을 실행할때는 `Use configured profiles`를 선택한다. `Use custom profile` 을 선택하면 수행할 작업을 하나씩 선택할 수 있다.
 
-image:images/eclipse-cleanup.png["Eclipose의 Cleanup 기능", align="center", width="50%"]
+image:images/eclipse-cleanup.png["Eclipse의 Cleanup 기능", align="center", width="50%"]
 
 [[eclipse-checkstyle]]
 ==== Checkstyle 설정
 
 ===== 플러그인 설치
-1. 메뉴에서 `Help > Eclise Marketplace`에서 'Checkstyle plugin'으로 검색한다.
+1. 메뉴에서 `Help > Eclipse Marketplace`에서 'Checkstyle plugin'으로 검색한다.
 2. Eclipse Checkstyle plugin(eclipse-cs)를 찾아서 `[Install]` 버튼을 누른다.
 
 이미 플러그인을 설치했다면 권장하는 버전이 설치되어 있는지 확인을 한다. `Help > Installation Details` 메뉴에서 이를 확인할 수 있다.
@@ -475,13 +475,13 @@ image:images/eclipse-checkstyle-install.png["Eclipse Checkstyle plugin 설치", 
 * `Write formatter/cleanup config (experimental!)` : 체크하지 않음
 * `Simple - use the following check configuration for all files` : 앞 단계에서 설정한 `naver-checkstyle-rules` 선택
 * `Excluding from checking`
-** `files outside sourcxe directories` : 체크
+** `files outside source directories` : 체크
 ** `derived (generated) files` : 체크
 
 [[eclipse-show-whitespaces]]
 ==== 공백 문자 보이기 설정
 탭과 스페이스가 섞여 있는 프로젝트의 코드를 정리할 때는 탭과 스페이스를 눈에 보이게 표시한다.
-`Windows > Preferences > Editors > Text Editors` 에서 `Show whitespaces characters` 를 선택한다.
+`Window > Preferences > Editors > Text Editors` 에서 `Show whitespace characters` 를 선택한다.
 
 [[eclipse-customizing]]
 ==== 커스터마이징
@@ -492,7 +492,7 @@ Eclipse는 들여쓰기로 4개 크기의 탭을 디폴트로 사용한다. {ecl
 
 만약 탭 대신 스페이스로 들여쓰기를 하려는 프로젝트에서는 아래와 같이 설정한다.
 
-* `Windows > Preferences > Editors > Text Editors`에 메뉴로 이동한다.
+* `Window > Preferences > Editors > Text Editors` 메뉴로 이동한다.
 ** `Insert spaces for Tab`를 선택한다.
 
 {eclipse-formatter}[naver-eclipse-formatter.xml]에 반영하려면 `tabulation.char` 속성을 `space` 로 바꾼다.
@@ -505,19 +505,19 @@ Eclipse는 들여쓰기로 4개 크기의 탭을 디폴트로 사용한다. {ecl
 
 ===== 줄바꿈 후 추가 들여쓰기 단계 조정
 Eclipse의 자동 포멧 기능을 적용했을 때 (단축키 `Ctrl+Shift+f` ) 적용되는 기준이다.
-이 저장소에서 제공하는 {eclipse-formatter}[naver-eclipse-formatter.xml] 파일의 설정으로는 문장에서 `;` 을 선언하기 전 중간에 줄바꿈을 했을 때 1단계의 들어쓰기가 추가된다.
+이 저장소에서 제공하는 {eclipse-formatter}[naver-eclipse-formatter.xml] 파일의 설정으로는 문장에서 `;` 을 선언하기 전 중간에 줄바꿈을 했을 때 1단계의 들여쓰기가 추가된다.
 
 이를 2단계로 바꾸려면 `Java Code Style > Formatter > [Edit] > Line Wrapping > General settings` 의 아래 항목을 조정한다.
 
-* `Default indention for warpped lines:` : 2
-* `Default indention for array initalizers:` : 2
+* `Default indentation for wrapped lines:` : 2
+* `Default indentation for array initializers:` : 2
 
-image:images/eclipse-line-wrapping.png["IntelliJ 줄바꿈 들여쓰기 설정", align="center", width="50%"]
+image:images/eclipse-line-wrapping.png["Eclipse 줄바꿈 들여쓰기 설정", align="center", width="50%"]
 
 {eclipse-formatter}[naver-eclipse-formatter.xml] 에서는 `continuation_indentation` 관련 속성을 2로 바꾸면 위와 같은 효과가 있다.
 
 [source,xml]
-.Eclipse formatter에서 들어쓰기 단계 조정
+.Eclipse formatter에서 들여쓰기 단계 조정
 ----
 <setting id="org.eclipse.jdt.core.formatter.continuation_indentation_for_array_initializer" value="2"/>
 <setting id="org.eclipse.jdt.core.formatter.continuation_indentation" value="2"/>
@@ -540,17 +540,17 @@ image:images/eclipse-line-wrapping.png["IntelliJ 줄바꿈 들여쓰기 설정",
 ** image:images/intellij-formatter-import.png["IntelliJ Formatter Import", align="center", width="50%"]
 ** 1에서 다운로드한 `naver-intellij-formatter.xml` 파일을 선택한후 `[OK]` 버튼을 누른다.
 ** image:images/intellij-formatter-import-scheme.png["IntelliJ Formatter Import Scheme", align="center", width="50%"]
-** `TO` 항목에는 `naver-intellij-formatter.xml` 안에 선언된 'Naver-Coding-Convnetion-v1.2'와 같은 이름이 디폴트로 나온다. 이 이름은 IntelliJ에서 전역적인 식별자가 되어서 다른 프로젝트에도 참조가 된다. 포멧터를 커스터 마이징했거나 프로젝트마다 다른 포멧터 설정을 쓴다면 이 스키마의 이름이 유일성 있게 인지되도록 수정한다.
+** `TO` 항목에는 `naver-intellij-formatter.xml` 안에 선언된 'Naver-coding-convention-v1.2'와 같은 이름이 디폴트로 나온다. 이 이름은 IntelliJ에서 전역적인 식별자가 되어서 다른 프로젝트에도 참조가 된다. 포멧터를 커스터 마이징했거나 프로젝트마다 다른 포멧터 설정을 쓴다면 이 스키마의 이름이 유일성 있게 인지되도록 수정한다.
 ** Settings 레이어의 `[OK]` 버튼을 누른다.
 
 ==== 항목별 수동 설정
-만약 이 가이드에서 제공하는 {intellij-formatter}[naver-intellij-formatter.xm] 설정을 활용하기가 어려운 상황이라면 최소한 아래의 항목들은 직접 설정한다.
+만약 이 가이드에서 제공하는 {intellij-formatter}[naver-intellij-formatter.xml] 설정을 활용하기가 어려운 상황이라면 최소한 아래의 항목들은 직접 설정한다.
 
 ===== 들여쓰기
 '<<indentation-tab>>' , '<<4-spaces-tab>>' 설정을 준수하기 위한 설정이다.
 
 * `File > Settings > Editor > Code Style > Java` 메뉴로 이동
-** `User tab charactor` : 선택
+** `Use tab character` : 선택
 ** `Tab Size`, `Indent` : 4
 
 ===== Import 구문
@@ -633,7 +633,7 @@ image:images/intellij-checkstyle-install.png["CheckStyle-IDEA", align="center", 
 ** image:images/intellij-checkstyle-suppressions.png["IntelliJ Checkstyle config_loc", align="center", width="50%"]
 ** 검사 예외를 지정하지 않는다면 `[Next]` 버튼을 누른다.
 ** 예외 정책을 지정할 `naver-checkstyle-suppressions.xml` 이 있을 경우에는 파일의 위치를 입력한 후 `[Next]` 버튼을 누른다. 프로젝트 루트에서 상대경로로 입력해도 된다.
-5. `naver-checkstyle-rules` 규칙을 앞의 체크박스를 선택한다.
+5. `naver-checkstyle-rules` 규칙 앞의 체크박스를 선택한다.
 ** image:images/intellij-checkstyle-settings.png["IntelliJ Checkstyle 설정", align="center", width="50%"]
 
 WARNING: Checkstyle의 상위 버전에서 하위 호환성으로 인한 문제가 생길 경우 `Checkstyle versions` 항목을 `8.24` 로 고정하면 {checkstyle-rules}[naver-checkstyle-rules.xml] 을 사용할 수 있다.
@@ -653,25 +653,25 @@ WARNING: Checkstyle의 상위 버전에서 하위 호환성으로 인한 문제�
 
 1. `File > Settings > Editor > Code Style > Java` 메뉴로 이동한다.
 2. `Tabs and Indents` 탭으로 이동해서 아래 항목을 입력한다.
-** `Use tab charactor` : 미선택
+** `Use tab character` : 미선택
 ** `Tab size` : 4
 
 ===== 줄바꿈 후 추가 들여쓰기 단계 조정
 IntelliJ의 자동 포멧 기능을 적용했을 때 (단축키 `Ctrl+Shift+f` ) 적용되는 기준이다.
-이 저장소에서 제공하는 `naver-intellij-formatter.xml` 파일의 설정으로는 문장에서 `;` 을 선언하기 전 중간에 줄바꿈을 했을 때 1단계의 들어쓰기가 추가된다.
+이 저장소에서 제공하는 `naver-intellij-formatter.xml` 파일의 설정으로는 문장에서 `;` 을 선언하기 전 중간에 줄바꿈을 했을 때 1단계의 들여쓰기가 추가된다.
 
 이를 2단계로 바꾸려면 아래와 같이 설정한다.
 
 1. `File > Settings > Editor > Code Style > Java` 메뉴로 이동한다.
 2. `Tabs and Indents` 탭으로 이동한다.
-3. `Continuation ident:` 항목을 8로 입력한다.
+3. `Continuation indent:` 항목을 8로 입력한다.
 
 image:images/intellij-indents.png["IntelliJ Indents 설정", align="center", width="50%"]
 
 {intellij-formatter}[naver-intellij-formatter.xml] 파일에서는 `CONTINUATION_INDENT_SIZE` 속성을 8로 선언해서 반영할 수 있다.
 
 [source,xml]
-.IntelliJ formatter에서 들어쓰기 단계 조정
+.IntelliJ formatter에서 들여쓰기 단계 조정
 ----
     <indentOptions>
         <option name="CONTINUATION_INDENT_SIZE" value="8" />
@@ -698,7 +698,7 @@ tabstop은 `\t`문자를 몇개의 크기로 보여줄지를, shiftwidth는 `>>`
 
 [[vi-textwidth]]
 ==== 한 줄 최대길이
-'<<line-length-120>>' 규칙을 준수하기 위해 ‘textwidth’ 옵션을 사용한다.
+'<<line-length-120>>' 규칙을 준수하기 위해 `textwidth` 옵션을 사용한다.
 
 [source]
 ----
