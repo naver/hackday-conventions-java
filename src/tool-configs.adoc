@@ -37,7 +37,7 @@ tab_width = 4
 # [no-trailing-spaces]
 trim_trailing_whitespace = true
 
-[line-length-120]
+# [line-length-120]
 max_line_length = 120
 
 ----
@@ -571,7 +571,7 @@ image:images/intellij-imports.png["IntelliJ Imports 설정", align="center", wid
 ===== 줄바꿈 시 연산자 위치
 '<<line-wrapping-position>>' 규칙에 따라 연산자 전에 줄바꿈을 해야한다. 자동 정렬 시에 이를 준수하기 위해서 아래와 같이 설정한다.
 
-1. `File > Settings > Editors > Code Style > Java > Imports > Import Layout` 로 이동한다.
+1. `File > Settings > Editors > Code Style > Java > Wrapping and Braces` 로 이동한다.
 2. `Binary expressions` 아래의 `Operation sign on next line` 항목을 선택한다.
 
 image:images/intellij-oper-sign.png["IntelliJ Wrapping and Braces 설정", align="center", width="50%"]
@@ -580,7 +580,7 @@ image:images/intellij-oper-sign.png["IntelliJ Wrapping and Braces 설정", align
 [[intellij-saveactions]]
 ==== 파일의 마지막에 새줄 문자가 없는 경우 추가
 <<newline-eof>> 규칙을 준수하기 위한 설정이다.
-`File` > `Settings` > `Editor` > `General` 메뉴에서 `Ensure line feed at file end on Save`  를 선택한다.
+`File` > `Settings` > `Editor` > `General` 메뉴에서 `Ensure every saved file ends with a line break`  를 선택한다.
 
 [[intellij-save-actions]]
 ==== 파일을 저장 할 때마다 포멧터 자동 적용
@@ -610,7 +610,7 @@ https://plugins.jetbrains.com/plugin/7642-save-actions[Save Actions plugin]을 �
 
 ===== 플러그인 설치
 1. `File > Settings > Plugins` 메뉴로 이동한다.
-2. `[Browse Reposities..]` 버튼 클릭
+2. `Marketplace` 탭 클릭
 3. 'Checkstyle'의 단어로 검색해서 CheckStyle-IDEA 플러그인을 찾은 후 `[Install]` 버튼을 클릭
 
 이미 플러그인이 설치되어 있다면 권장하는 버전인지 확인을 한다.
@@ -620,11 +620,11 @@ CheckStyle-IDEA의 사용여부를 선택하는 화면에서 'This plugin provid
 image:images/intellij-checkstyle-install.png["CheckStyle-IDEA", align="center", width="50%"]
 
 ===== 검사 설정
-1. `File > Settings > Other Settings > Checkstyle` 메뉴에서 아래 항목들을 설정 한다
+1. `File > Settings > Tools > Checkstyle` 메뉴에서 아래 항목들을 설정 한다
 ** `Checkstyle versions` : 8.24 이상 선택. 디폴트 설정과 다르다면 'Apply' 버튼을 한번 눌러준다.
-** `Scan scope` : `All sources including tests` 선택
+** `Scan scope` : `All sources (including tests)` 선택
 ** `Treat Checkstyle errors as warnings` : 체크
-2. `File > Settings > Other Settins > Checkstyle` 메뉴로 이동한다.
+2. `File > Settings > Tools > Checkstyle` 메뉴로 이동한다.
 3. `[+]` 버튼을 누르면 나오는 입력창에서 아래 항목을 입력한다.
 ** `Description` : 식별할 수 있는 이름. `Naver Checkstyle Rules [버전]` 를 권장한다. 프로젝트별로 커스터마이징을 했다면 식별하기 쉽게 프로젝트 이름 등을 붙인다.
 ** `Use a Local Checkstyle File` : 선택하고 `[Browse]` 버튼을 눌러서 `naver-checkstyle-rules.xml`을 지정한다.
